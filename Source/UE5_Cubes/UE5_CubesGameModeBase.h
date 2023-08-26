@@ -7,8 +7,6 @@
 #include "MyCubeActor.h"
 #include "InputController.h"
 #include "MyCameraController.h"
-#include "VisualEffect.h"
-#include "Font_VisualEffect.h"
 #include <fstream>
 #include <iostream>
 #include <filesystem>
@@ -17,10 +15,6 @@
 #include "GameFramework/GameModeBase.h"
 #include "UE5_CubesGameModeBase.generated.h"
 
-
-/**
- * 
- */
 
 UCLASS()
 class UE5_CUBES_API AUE5_CubesGameModeBase : public AGameModeBase
@@ -44,87 +38,15 @@ class UE5_CUBES_API AUE5_CubesGameModeBase : public AGameModeBase
 	UPROPERTY()
 		AMyCameraTransition* newT;
 	UPROPERTY()
-		int CubeQuantity;
-	UPROPERTY()
 		UInputComponent* InputThing;
-	UPROPERTY()
-		UFont_VisualEffect* testObject;
-	TArray<CubeFont> FontAStore; 
 
 	//Functions
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "VisualEffectVariables")
 		AMyCubeActor* CubeParent;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "VisualEffectVariables")
-		TArray<UVisualEffect*> EffectsContainer;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "VisualEffectVariables")
-		TArray<UFont_VisualEffect*> FontEffectsContainer;
-
-private:
-	FString DecodeOneStep(char* filename);
 	
-	TArray<char> GetVectorFromPng(const TArray<unsigned char>& image, unsigned w, unsigned h);
-
-	UFUNCTION()
-		void SpawnCubeCubes();
-	void RemoveCubes();
-	UFUNCTION()
-		void SpinCubes();
-	//UFUNCTION is only required for blueprints?
-	float GetRandomFloat();
-	float GetRandomColorFloat();
-	float GetRandomFloat(float Upper, float Lower);
-	UFUNCTION()
-		float GetRandomFloatLight();
-	UFUNCTION()
-		void DecayEffect(int lightTimer);
-	UFUNCTION()
-		void DecayEffectReverse(int TimerA);
-	void DecayEffectReverse2(int TimerA);
-	void DecayEffect2(int TimerA);
-	UFUNCTION()
-		FVector GetRandomVector();
-	UFUNCTION()
-		FVector GetZeroVector();
-	UFUNCTION()
-		void AttachChildCubes();
-	UFUNCTION()
-		void RubixShiftRotation(float timer);
-	UFUNCTION()
-		void LightRubix(int lightTimer);
-	UFUNCTION()
-		void SolidRandomToBlackFade(int lightTimer);
-	void ClearTimers();
-	UFUNCTION()
-		void RubixRandomToBlackFade(int lightTimer);
-	UFUNCTION()
-		void SwapCamera();
-	UFUNCTION()
-		void JaneEffect(int DarkTimer, int LightTimer);
-	UFUNCTION()
-		void LoadInFontA();
-	UFUNCTION()
-		void ApplyFontA(FVector TextColor, FVector BorderColor, FVector CoreColor, FString Letter);
-	UFUNCTION()
-		void ApplyFontBlackoutRandom(FString Letter);
-	UFUNCTION(BlueprintCallable, category = "PlayVisualEffect")
-		void PlayEffects();
-	TArray<FString> GetAllFilesInDirectory(const FString directory, const bool fullPath, const FString onlyFilesStartingWith, const FString onlyFilesWithExtension);
-	UFUNCTION()
-		FString MirrorFString(FString mirror);
-	UFUNCTION()
-		FString ShiftRightStep(FString mirror);
-	UFUNCTION()
-		FString RotateCubeStringRight(FString mirror);
-	void AttachEffects();
-
 public:
-	UFUNCTION()
-		void DarkRubix(int lightTimer, int DarkTimer);
-	void RandomColor();
-	void ResetCube();
+	
 	UFUNCTION()
 		void W_Event();
 	UFUNCTION()
